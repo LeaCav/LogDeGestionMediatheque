@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter/modifier un membre</title>
+</head>
+<body>
+    <header>
+        <h1>Ajouter - Modifier un membre</h1>
+    </header>
+
+    <main>
+        <form method="post">
+            {% csrf_token %}
+        {{ form }}
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <form method="post">
+            {% csrf_token %}
+        {{ form }}
+            <button type="submit">Modifier</button>
+        </form>
+    </main>
+    
+</body>
+</html>

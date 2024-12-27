@@ -1,0 +1,87 @@
+<!-- conformément à la documentation de django, je crée un fichier templates dans mon app, dans lequel je crée un nouveau fichier members où j'insère mon index.html.
+ Django choisit le premier gabarit qu’il trouve pour un nom donné et dans le cas où vous avez un gabarit de même nom dans une autre application, Django ne fera pas la différence.-->
+
+ <!DOCTYPE html>
+ <html lang="fr">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des médias</title>
+ </head>
+ <body>
+    <header>
+        <h1>Liste des médias</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Liste des livres</h2>
+            <ul>
+                {% for book in books %}
+                
+                <li>
+                    <strong>{{ book.title }}</strong> écrit par {{ book.author }} - disponibilité :
+                        {% if book.is_available %}
+                        disponible
+                        {% else %}
+                        indisponible
+                        {% endif %}
+                </li>
+
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Liste des CDs</h2>
+            <ul>
+                {% for cd in cds %}
+
+                <li>
+                    <strong>{{ cd.title }}</strong> par {{ cd.artist }} - disponibilité :
+                        {% if cd.is_available %}
+                        disponible
+                        {% else %}
+                        indisponible
+                        {% endif %}
+                </li>
+
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Liste des DVDs</h2>
+            <ul>
+                {% for dvd in dvds %}
+
+                <li>
+                    <strong>{{ dvd.title }}</strong> réalisé par {{ dvd.director }} - disponibilité :
+                        {% if dvd.is_available %}
+                        disponible
+                        {% else %}
+                        indisponible
+                        {% endif %}
+                </li>
+
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Liste des Jeux de société</h2>
+            <ul>
+                {% for game in games %}
+
+                <li>
+                    <strong>{{ game.title }}</strong> {{ game.creator }}
+                </li>
+
+                {% endfor %}
+            </ul>
+        </section>
+
+    </main>
+    
+ </body>
+ </html>

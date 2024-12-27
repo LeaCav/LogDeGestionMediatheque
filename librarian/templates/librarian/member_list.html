@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des membres</title>
+</head>
+<body>
+    <header>
+        <h1>Liste des membres</h1>
+    </header>
+
+    <main>
+        <section>
+            <ul>
+                {% for member in members %}
+                <li>
+                    id : {{member.id}} <br>
+                    <strong>Nom : {{member.name}}</strong> <br>
+                    Email : {{member.email}}
+                    Emprunts :
+                    <ol>
+                        {% for book in member.borrowed_book.all %}
+                        <li>Livre : {{ book.title }} (emprunté le {{ book.borrow_date|date:"d/m/Y" }} )</li>
+                        {% endfor %}
+
+                        {% for cd in member.borrowed_cd.all %}
+                        <li>CD : {{ cd.title}} (emprunté le {{ cd.borrow_date|date:"d/m/Y" }})</li>
+                        {% endfor %}
+
+                        {% for dvd in member.borrowed_dvd.all %}
+                        <li>DVD : {{ dvd.title}} (emprunté le {{ dvd.borrow_date|date:"d/m/Y" }})</li>
+                        {% endfor %}
+                    </ol>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    
+</body>
+</html>
